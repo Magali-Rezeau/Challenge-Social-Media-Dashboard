@@ -30,15 +30,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin({
-    patterns: [
-        {
-            from: './src/assets/images/*',
-            to: 'assets/images',
-            flatten: true,
-        },
-    ],
-    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "./src/index.html")
     })
