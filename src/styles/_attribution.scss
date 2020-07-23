@@ -1,0 +1,11 @@
+.attribution {
+    background-color: var(--bg);
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--text-primary);
+    margin: 2rem 0;
+
+    & a {
+        color: var(--text-secondary);
+    }
+}

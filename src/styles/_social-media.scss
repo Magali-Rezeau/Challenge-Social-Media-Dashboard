@@ -1,0 +1,360 @@
+.social-media {
+    background: linear-gradient(to top, var(--bg) 70%, var(--bg-pattern) 30%);
+    min-height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 16rem 1fr 16rem;
+    grid-template-rows: 14rem 20rem auto;
+
+    @include md {
+        grid-template-columns: 4rem 1fr 4rem;
+    }
+
+    @include sm {
+        grid-template-rows: 14rem 45rem auto;
+        grid-template-columns: 4rem 1fr 4rem;
+        background: linear-gradient(to top, var(--bg) 80%, var(--bg-pattern) 20%);
+    }
+
+    @include xs {
+        grid-template-rows: 14rem 80rem auto;
+        grid-template-columns: 2rem 1fr 2rem;
+        background: linear-gradient(to top, var(--bg) 90%, var(--bg-pattern) 10%);
+    }
+
+    & .header {
+        grid-area: 1 / 2 / 2 / 3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include sm {
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            height: 100%;
+        }
+
+        &-title {
+            position: relative;
+
+            & h1 {
+                @include sm {
+                    font-size: 2rem;
+                }
+            }
+
+            & h4 {
+                color: var(--text-secondary);
+            }
+
+
+        }
+
+        & hr {
+            width: 100%;
+            display: none;
+
+            @include sm {
+                display: block;
+
+            }
+        }
+
+        &-switcher {
+            display: flex;
+            align-items: center;
+
+            @include sm {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            & h4 {
+                color: var(--text-secondary);
+            }
+
+            & label {
+                position: relative;
+                display: inline-block;
+                width: 6rem;
+                height: 3rem;
+                margin-left: 2rem;
+
+                @include sm {
+                    width: 5.5rem;
+                    height: 2.6rem;
+                }
+
+                @include xs {
+                    width: 5rem;
+                    height: 2rem;
+                }
+
+                & input {
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+
+                    &:checked+.slider {
+                        background: var(--toggle);
+                    }
+
+                    &:focus+.slider {
+                        box-shadow: 0 0 1px #fff;
+                    }
+
+                    &:checked+.slider::before {
+                        transform: translateX(26px);
+                        left: .8rem;
+                    }
+                }
+
+                & .slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: var(--toggle);
+                    transition: .4s;
+                    border-radius: 3.4rem;
+
+                    &::before {
+                        position: absolute;
+                        content: "";
+                        height: 2.2rem;
+                        width: 2rem;
+                        left: .6rem;
+                        bottom: .4rem;
+                        background: #fff;
+                        border-radius: 50%;
+
+                        @include sm {
+                            width: 1.8rem;
+                            height: 1.8rem;
+                            left: .4rem;
+                        }
+
+                        @include xs {
+                            width: 1.2rem;
+                            height: 1.2rem;
+                            left: .4rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .features {
+        grid-area: 2 / 2 / 3 / 3;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 3.5rem;
+        height: 100%;
+
+        @include sm {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include xs {
+            grid-template-columns: 1fr;
+        }
+
+        &-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            text-align: center;
+            background: var(--bg-card);
+            border-radius: 3px;
+            z-index: 2;
+
+            &:hover {
+                background: var(--bg-card-hover);
+                cursor: pointer;
+            }
+
+            &:nth-child(1) {
+                border-top: 2px solid var(--facebook);
+            }
+
+            &:nth-child(2) {
+                border-top: 2px solid var(--twitter);
+            }
+
+            &:nth-child(3) {
+                border-image-source: linear-gradient(to left, #fdc468, #df4996);
+                border-top: 2px solid;
+                border-image-slice: 1;
+                border-radius: 3px;
+            }
+
+            &:nth-child(4) {
+                border-top: 2px solid var(--youtube);
+
+                &>:last-child {
+                    color: var(--secondary);
+                }
+            }
+
+            &-social-networks {
+                display: flex;
+                align-items: center;
+                color: var(--text-secondary);
+
+                &-icon {
+                    margin-right: .5rem;
+                }
+            }
+
+            &-followers {
+                display: flex;
+                flex-direction: column;
+
+                &-nbr {
+                    font-size: 4.5rem;
+                    font-weight: 700;
+
+                    @include sm {
+                        font-size: 3.5rem;
+                    }
+                }
+
+                &-txt {
+                    text-transform: uppercase;
+                    color: var(--text-secondary);
+                    letter-spacing: .4rem;
+                    font-size: 1.2rem;
+
+                    @include sm {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            &-trend {
+                color: var(--primary);
+                display: flex;
+                align-items: center;
+                font-weight: 700;
+
+                &-icon {
+                    display: flex;
+                    align-items: center;
+                    margin-right: .5rem;
+                }
+
+                &-txt {
+                    font-size: 1.2rem;
+
+                    @include sm {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    & .overview {
+        grid-area: 3 / 2 / 4 / 3;
+        display: grid;
+        grid-template-rows: 9rem repeat(2, 13rem);
+        height: 100%;
+
+        @include sm {
+            grid-template-rows: 9rem repeat(4, 13rem);
+        }
+
+        @include xs {
+            grid-template-rows: 9rem repeat(8, 13rem);
+        }
+
+        &-title {
+            grid-row: 1 / 2;
+            align-self: end;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-size: 1.6rem;
+
+            @include sm {
+                font-size: 1.4rem;
+            }
+        }
+
+        &-card {
+            grid-row: 2 / 4;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 3.5rem;
+
+            @include sm {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include xs {
+                grid-template-columns: 1fr;
+            }
+
+            &-item {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                background: var(--bg-card);
+                border-radius: 3px;
+                padding: 2rem;
+
+                &:hover {
+                    background: var(--bg-card-hover);
+                    cursor: pointer;
+                }
+
+                &-txt {
+                    width: 50%;
+                    color: var(--text-secondary);
+                    font-weight: 700;
+                }
+
+                &-icon {
+                    width: 10%;
+                }
+
+                &-nbr {
+                    width: 50%;
+                    font-size: 3rem;
+                    font-weight: 700;
+                    align-self: flex-end;
+
+                    @include sm {
+                        font-size: 2.5rem;
+                    }
+                }
+
+                &-trend {
+                    width: 30%;
+                    align-self: flex-end;
+                    display: flex;
+                    justify-content: flex-end;
+                    font-weight: 700;
+                    color: var(--primary);
+
+                    &-icon {
+                        display: flex;
+                        align-items: center;
+                        margin-right: .5rem;
+                    }
+                }
+
+                &:nth-child(2)>:nth-child(4),
+                &:nth-child(7)>:nth-child(4),
+                &:nth-child(8)>:nth-child(4) {
+                    color: var(--secondary);
+                }
+            }
+        }
+    }
+}
